@@ -1,0 +1,26 @@
+<div class="container mt-5 ml-5">
+   <label for="titulo"> Ingresa el titulo: </label>
+   <Input type="text" placeholder="Titulo" id="titulo"  @value={{this.title}} @onchange={{this.title}}/>
+   <button {{on "click" this.model}}class="btn btn-primary"> Buscar</button>
+   <button {{on "click" this.limpiar}}class="btn btn-primary"> Limpiar</button>
+</div>
+
+{{#if this.item }}
+<div class="card" style="width: 18rem;">
+  <img src={{this.img}} class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{this.name}}</h5>
+    <p class="card-text">{{this.plot}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"> {{#each this.ratings as |rating|}}
+               <article>
+               {{rating.Source}}  = {{rating.Value}}
+               </article>
+            {{/each}}</li>
+    <li class="list-group-item"> {{this.genre}}  </li>
+    <li class="list-group-item">{{this.year}}</li>
+     <li class="list-group-item"> {{this.runtime}}</li>
+
+  </ul>
+</div>{{/if}}
